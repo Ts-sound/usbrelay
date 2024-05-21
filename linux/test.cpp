@@ -27,7 +27,7 @@ int main() {
     for (size_t i = 0; i < cnt; i++) {
       std::cout << "\t path : " << boards[i].path
                 << "\t type : " << (int)(boards[i].module_type)
-                << "\t relay_cnt : " <<(int) boards[i].relay_count
+                << "\t relay_cnt : " << (int)boards[i].relay_count
                 << "\t serial : " << &(boards[i].serial)
                 << "\t state : " << boards[i].state << std::endl;
     }
@@ -46,6 +46,13 @@ int main() {
     sleep(5);
     ret = operate_relay(temp->path, 1, CMD_ON, 1);
     sleep(2);
+
+    for (size_t i = 0; i < temp->relay_count; i++) {
+      ret = operate_relay(temp->path, i + 1, CMD_ON, 1);
+      sleep(4);
+      ret = operate_relay(temp->path, i + 1, CMD_OFF, 1);
+      sleep(4);
+    }
   }
 
   shutdown();

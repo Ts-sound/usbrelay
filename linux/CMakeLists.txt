@@ -30,8 +30,9 @@ endforeach(file ${PACKAGE_INC})
 #####################################
 # package_src
 #####################################
-file(GLOB_RECURSE PACKAGE_SRC
+file(GLOB PACKAGE_SRC
   "*.c"
+  "hidapi/*.c"
 )
 
 message(STATUS "PACKAGE_SRC")
@@ -47,20 +48,6 @@ set(CMAKE_CXX_FLAGS "-std=c++11 -g -O0")
 add_compile_options(-rdynamic -fPIC)
 
 add_library(${PROJECT_NAME} STATIC ${PACKAGE_SRC})
+add_library(${PROJECT_NAME}_shared SHARED ${PACKAGE_SRC})
 
-#####################################
-# install
-#####################################
-# INSTALL (
-#   DIRECTORY include/${PROJECT_NAME}
-#   DESTINATION ${install_path}/include
-#   PATTERN "config.h" EXCLUDE
-#   PATTERN ".svn" EXCLUDE
-#   PATTERN "*.am" EXCLUDE
-#   PATTERN "*.in" EXCLUDE
-# )
-
-# INSTALL (
-#   TARGETS ${PROJECT_NAME}
-#   ARCHIVE DESTINATION ${install_path}/lib
-# )
+add_executable(test test.cpp  ${PACKAGE_SRC})

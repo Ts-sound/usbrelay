@@ -23,6 +23,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #ifndef __USBRELAY_H
 #define __USBRELAY_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //Configuration
 #define CMD_ON 0xff
 #define CMD_OFF 0xfd
@@ -59,6 +63,8 @@ void shutdown(void);
 const char *libusbrelay_version(void);
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -51,3 +51,4 @@ add_library(${PROJECT_NAME} STATIC ${PACKAGE_SRC})
 add_library(${PROJECT_NAME}_shared SHARED ${PACKAGE_SRC})
 
 add_executable(test test.cpp  ${PACKAGE_SRC})
+target_link_libraries(test -ludev)

@@ -58,6 +58,7 @@
         "random": "cpp",
         "set": "cpp",
         "string": "cpp",
-        "types.h": "c"
+        "types.h": "c",
+        "libudev.h": "c"
     }
 }

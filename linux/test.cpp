@@ -14,7 +14,7 @@ int main() {
               << std::endl;
     ret = enumerate_relay_boards("", 1, 1);
     std::cout << "ret = " << ret << std::endl;
-    std::cout << "---------------------------------"  << std::endl;
+    std::cout << "---------------------------------" << std::endl;
   }
 
   {
@@ -27,11 +27,16 @@ int main() {
     for (size_t i = 0; i < cnt; i++) {
       std::cout << "\t path : " << boards[i].path
                 << "\t type : " << (int)(boards[i].module_type)
-                << "\t relay_cnt : " << boards[i].relay_count
-                << "\t serial : " << boards[i].serial
+                << "\t relay_cnt : " <<(int) boards[i].relay_count
+                << "\t serial : " << &(boards[i].serial)
                 << "\t state : " << boards[i].state << std::endl;
     }
-    std::cout << "---------------------------------"  << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+
+    if (cnt < 1) {
+      shutdown();
+      return 0;
+    }
 
     std::cout << "operate_relay(const char *path,unsigned char relay, unsigned "
                  "char state,int debug);  "

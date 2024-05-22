@@ -28,8 +28,8 @@ int main() {
       std::cout << "\t path : " << boards[i].path
                 << "\t type : " << (int)(boards[i].module_type)
                 << "\t relay_cnt : " << (int)boards[i].relay_count
-                << "\t serial : " << &(boards[i].serial)
-                << "\t state : " << boards[i].state << std::endl;
+                << "\t serial : " <<(char*) &(boards[i].serial)
+                << "\t state : " <<  (int)boards[i].state << std::endl;
     }
     std::cout << "---------------------------------" << std::endl;
 
